@@ -1,38 +1,310 @@
+/** @format */
 .App {
-  text-align: center;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  padding: 90px 165px;
+  color: whitesmoke;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+  padding: 20px;
+  font-size: 38px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login-body {
+  background-color: whitesmoke;
+  border-radius: 12px;
+  gap: 2rem;
+  padding: 8px;
+  padding: 28px 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.fields {
+  width: 300px;
+}
+.fields input {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 20px;
+  border: none;
+  outline: none;
+}
+.fields input:not(:first-child) {
+  margin-top: 28px;
+}
+.fields button {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  border: none;
+  outline: none;
+  margin-top: 28px;
+}
+.fields button:hover {
+  transition: all 1s ease-in-out;
+  transform: scale(1.1);
+}
+
+.alert {
+  color: red;
+  padding: unset;
+}
+
+.fields a {
+  text-decoration: none;
+}
+/* // add to list page css */
+.add-list-container {
+  padding: 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.items {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  color: whitesmoke;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+  background-color: #b551c2;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.items:hover {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(-3deg);
+}
+.items img {
+  width: 100%;
+  height: 260px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+.items button {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: black;
+  border-radius: 10px;
+  color: whitesmoke;
+  padding: 6px 10px;
+}
+.items :not(:first-child) {
+  margin-top: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+.view-added-items {
+  padding: 20px 104px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin-top: 32px;
+  overflow-x: auto;
+  width: 100%;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+table tbody tr {
+  color: #c7c7c7;
+  font-weight: bold;
+}
+
+.view-added-items .delete {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: black;
+  color: whitesmoke;
+}
+.view-added-items .delete:hover {
+  transition: all 1s ease-in-out;
+  transform: scale(1.1);
+  color: red;
+}
+.checkout {
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  background: black;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  line-height: 28px;
+}
+.checkout:hover {
+  transform: scale(1.1);
+}
+
+/* // checkout page */
+.checkout-component {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 20px 24px;
+}
+.checkout-component thead th {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  border-bottom: 3px solid darkslategrey;
+  padding: 18px 0px;
+}
+.checkout-component tbody tr td {
+  border: none;
+  text-align: center;
+}
+.show-total {
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  background: black;
+  color: whitesmoke;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  line-height: 28px;
+  width: 300px;
+  float: right;
+}
+.checkout-container {
+  padding-bottom: 80px;
+}
+.payment {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+  padding: 20px 40px;
+  height: 500px;
+  margin-left: auto;
+  max-width: 300px;
+  background-color: black;
+}
+.payment h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-family: arial, sans-serif;
+  background: -webkit-linear-gradient(#667eea, #764ba2, #6b8dd6, #8e37d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-weight: 700;
+}
+.add-payment-methods {
+  margin-top: 28px;
+}
+.add-payment-methods h6 {
+  color: whitesmoke;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+form input,
+form label {
+  cursor: pointer;
+}
+.card-holder-name {
+  font-size: 14px;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 6px;
+  border-radius: 6px;
+}
+.checkout-button {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #667eea,
+    #764ba2,
+    #6b8dd6,
+    #8e37d7
+  );
+  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+.checkout-button:hover {
+  background-position: 100% 0;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.modal-body {
+  color: black;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  padding: 40px 0px;
+}
+
+@media (max-width: 1200px) {
+  .App {
+    padding: 38px 100px;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (max-width: 767px) {
+  .App {
+    padding: 38px 38px;
+  }
+  .app-header {
+    font-size: 24px;
+  }
+  .view-added-items {
+    padding: 20px 20px;
+  }
+  .show-total {
+    width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .App {
+    padding: 38px 12px;
+  }
+  .show-total {
+    width: 100px;
   }
 }
