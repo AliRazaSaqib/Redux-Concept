@@ -1,43 +1,17 @@
 /** @format */
 
-import { v4 as uuidv4 } from "uuid";
 import { ADD_ITEM, DELETE_ITEM, GET_ITEMS } from "../action/types";
 
-const initialState = {
-  items: [
-    {
-      id: uuidv4(),
-      name: "Shirt",
-      image: "/img.jpg",
-      price: 229,
-    },
-    {
-      id: uuidv4(),
-      name: "Pant",
-      image: "/pant.jpg",
-      price: 350,
-    },
-    {
-      id: uuidv4(),
-      name: "Jacket",
-      image: "/jacket.jpg",
-      price: 1000,
-    },
-  ],
-};
+const initialState = [];
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_ITEMS:
-      return {
-        ...state,
-      };
+    // item.id !== action.payload.id
+    case ADD_ITEM:
+      return [...state, action.payload];
 
     case DELETE_ITEM:
-      return {
-        ...state,
-        items: state.items.filter((item) => item.id !== action.payload.id),
-      };
+      return state.filter((item) => item.id !== action.payload.id);
 
     default:
       return state;

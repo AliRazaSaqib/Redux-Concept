@@ -1,28 +1,54 @@
 /** @format */
 
 import "../../App.css";
+import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItems } from "../../redux/action/itemAction";
+import { addItems, deleteItems } from "../../redux/action/itemAction";
 
 export default function List() {
   //get the data from redux instead context-api
   const dispatch = useDispatch();
-  const getItems = useSelector((state) => state.item.items);
-  const [items, setSelectedItems] = useState([]);
+  const getItems = useSelector((state) => state.item);
+  const [itemss, setSelectedItemss] = useState([]);
 
-  console.log("items", items);
+  // list of items
+  const items = [
+    {
+      id: uuidv4(),
+      name: "Shirt",
+      image: "/img.jpg",
+      price: 229,
+    },
+    {
+      id: uuidv4(),
+      name: "Pant",
+      image: "/pant.jpg",
+      price: 350,
+    },
+    {
+      id: uuidv4(),
+      name: "Jacket",
+      image: "/jacket.jpg",
+      price: 1000,
+    },
+  ];
 
   // add item to cart
+  let data = [];
   const addSelected = (el) => {
-    setSelectedItems([...items, el]);
+    // setSelectedItemss([...itemss, el]);
+    data = items.filter((it) => it.id === el.id);
+    dispatch(addItems(data));
+    setSelectedItemss([...itemss, el]);
   };
+
+  // console.log("filter", data);
 
   // remove item from card
   const handleRemove = (id) => {
     dispatch(deleteItems(id));
-    console.log("selected item id:", id);
   };
 
   return (
@@ -32,7 +58,7 @@ export default function List() {
       </div>
 
       <div className="add-list-container">
-        {getItems.map((el) => {
+        {items.map((el) => {
           return (
             <div key={el.id} className="d-flex align-items-center items">
               <div>{el.name}</div>
@@ -46,7 +72,7 @@ export default function List() {
         })}
       </div>
 
-      {items.length > 0 ? (
+      {getItems.length > 0 ? (
         <div className="view-added-items">
           <div className="app-header d-flex align-items-center justify-content-center">
             Product List
@@ -61,7 +87,7 @@ export default function List() {
               </tr>
             </thead>
             <tbody>
-              {items.map((el) => (
+              {itemss.map((el) => (
                 <tr key={el.id}>
                   <td>
                     <img

@@ -1,11 +1,12 @@
 /** @format */
 
-import React, { useContext, useEffect, useState } from "react";
 import "../../App.css";
-import { ListContext } from "./ContextProvider";
-
+import { useState } from "react";
+import { useSelector } from "react-redux";
 export default function Checkout() {
-  const [items, list, cartTotal] = useContext(ListContext);
+  // get data from redux and show in table
+  const [getReduxData] = useSelector((state) => state.item);
+  console.log(getReduxData);
 
   // hook for input fields
   const [state, setState] = useState({
@@ -44,16 +45,14 @@ export default function Checkout() {
             </tr>
           </thead>
           <tbody>
-            {list.map((el) => {
+            {getReduxData.map((el) => {
               return (
                 <tr key={el.id}>
                   <td>
-                    <td>
-                      <img
-                        src={el.image}
-                        style={{ height: "260px", width: "260px" }}
-                      />
-                    </td>
+                    <img
+                      src={el.image}
+                      style={{ height: "260px", width: "260px" }}
+                    />
                   </td>
                   <td>{el.name}</td>
                   <td>{el.price}</td>
