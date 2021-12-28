@@ -6,8 +6,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItems, deleteItems } from "../../redux/action/itemAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function List() {
+  // react-tostify
+  const notify = () =>
+    toast("Your item successfully deleted", { autoClose: false });
   //get the data from redux instead context-api
   const dispatch = useDispatch();
   const getItems = useSelector((state) => state.item);
@@ -51,6 +56,10 @@ export default function List() {
     );
     temp.itemsList.data = filteredItem;
     dispatch(deleteItems({ data: [...filteredItem] }));
+
+    setTimeout(() => {
+      notify();
+    }, 1000);
   };
 
   return (
@@ -58,7 +67,8 @@ export default function List() {
       <div className="app-header d-flex align-items-center justify-content-center">
         Add To List
       </div>
-
+      <ToastContainer className="tostify" />
+      <div></div>
       <div className="add-list-container">
         {items.map((el) => {
           return (

@@ -280,6 +280,16 @@ form label {
   padding: 40px 0px;
 }
 
+/* toastify */
+.tostify .Toastify__toast-theme--light {
+  color: #8e37d7;
+  font-weight: bold;
+}
+.tostify .Toastify__close-button--light {
+  color: #8e37d7;
+  opacity: 0.6;
+}
+
 @media (max-width: 1200px) {
   .App {
     padding: 38px 100px;
