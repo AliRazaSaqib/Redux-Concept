@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 export default function Checkout() {
   // get data from redux and show in table
-  const [getReduxData] = useSelector((state) => state.item);
-  console.log(getReduxData);
+  const getReduxData = useSelector((state) => state.item);
+  console.log("checkou", getReduxData);
 
   // hook for input fields
   const [state, setState] = useState({
@@ -45,20 +45,18 @@ export default function Checkout() {
             </tr>
           </thead>
           <tbody>
-            {getReduxData.map((el) => {
-              return (
-                <tr key={el.id}>
-                  <td>
-                    <img
-                      src={el.image}
-                      style={{ height: "260px", width: "260px" }}
-                    />
-                  </td>
-                  <td>{el.name}</td>
-                  <td>{el.price}</td>
-                </tr>
-              );
-            })}
+            {getReduxData?.itemsList?.data.map((el) => (
+              <tr key={el.id}>
+                <td>
+                  <img
+                    src={el.image}
+                    style={{ height: "260px", width: "260px" }}
+                  />
+                </td>
+                <td>{el.name}</td>
+                <td>{el.price}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         {/* <div className="show-total">Total: {cartTotal}</div> */}

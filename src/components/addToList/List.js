@@ -36,19 +36,21 @@ export default function List() {
   ];
 
   // add item to cart
-  let data = [];
   const addSelected = (el) => {
-    // setSelectedItemss([...itemss, el]);
-    data = items.filter((it) => it.id === el.id);
-    dispatch(addItems(data));
+    const data = items.filter((it) => it.id === el.id);
+    let temp = [...itemss, el];
+    dispatch(addItems({ data: [...itemss, el] }));
     setSelectedItemss([...itemss, el]);
   };
 
-  // console.log("filter", data);
-
   // remove item from card
   const handleRemove = (id) => {
-    dispatch(deleteItems(id));
+    let temp = getItems;
+    let filteredItem = getItems.itemsList.data.filter(
+      (item, index) => item.id !== id
+    );
+    temp.itemsList.data = filteredItem;
+    dispatch(deleteItems({ data: [...filteredItem] }));
   };
 
   return (
@@ -72,7 +74,7 @@ export default function List() {
         })}
       </div>
 
-      {getItems.length > 0 ? (
+      {itemss.length > 0 ? (
         <div className="view-added-items">
           <div className="app-header d-flex align-items-center justify-content-center">
             Product List
@@ -87,7 +89,7 @@ export default function List() {
               </tr>
             </thead>
             <tbody>
-              {itemss.map((el) => (
+              {getItems?.itemsList?.data.map((el) => (
                 <tr key={el.id}>
                   <td>
                     <img
@@ -98,7 +100,10 @@ export default function List() {
                   <td>{el.name}</td>
                   <td>{el.price}</td>
                   <td>
-                    <button className="delete" onClick={handleRemove}>
+                    <button
+                      className="delete"
+                      onClick={() => handleRemove(el.id)}
+                    >
                       Delete
                     </button>
                   </td>
